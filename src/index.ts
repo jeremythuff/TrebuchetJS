@@ -176,6 +176,15 @@ export class RigidBody {
     this.btMotionState = new ammo.btDefaultMotionState(startTransform);
     const rbInfo = new ammo.btRigidBodyConstructionInfo(mass, this.btMotionState, shape.btShape, localInertia);
     this.btBody = new ammo.btRigidBody(rbInfo);
+    if (options.friction !== undefined)
+      this.btBody.setFriction(options.friction);
+    if (options.restitution !== undefined)
+      this.btBody.setRestitution(options.restitution);
+    if (options.angularFactor !== undefined) {
+      const btAngularFactor = new ammo.btVector3(options.angularFactor[0], options.angularFactor[1], options.angularFactor[2]);
+      this.btBody.setAngularFactor(btAngularFactor);
+      ammo.destroy(btAngularFactor);
+    }
     ammo.destroy(rbInfo);
 
   }
