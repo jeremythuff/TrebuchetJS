@@ -2,6 +2,7 @@
 export interface RigidBodyOptions {
   position?: [number,number,number];
   velocity?: [number,number,number];
+  angularFactor?: [number,number,number];
   mass?: number
   friction?: number
   restitution?: number
@@ -15,6 +16,7 @@ export interface RigidBody {
   shape: Shape;
   position: [number,number,number];
   velocity: [number,number,number];
+  angularFactor: [number,number,number];
   mass: number;
   friction: number;
   restitution: number;
