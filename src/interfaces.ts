@@ -9,6 +9,7 @@ export interface RigidBodyOptions {
   linearDamping?: number
   angularDamping?: number
   gravity?: [number,number,number];
+  world?: World,
   shape: Shape
 }
 

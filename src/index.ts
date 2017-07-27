@@ -150,6 +150,7 @@ export class Box implements Shape, interfaces.Box {
 
 export interface RigidBodyOptions extends interfaces.RigidBodyOptions {
   shape: Shape;
+  world?: World;
 }
 
 export class RigidBody {
@@ -186,6 +187,9 @@ export class RigidBody {
       ammo.destroy(btAngularFactor);
     }
     ammo.destroy(rbInfo);
+
+    if (options.world !== undefined)
+      options.world.btDynamicsWorld.addRigidBody(this.btBody);
 
   }
 
