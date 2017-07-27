@@ -56,6 +56,28 @@ export interface Shape extends interfaces.Shape {
   btShape;
 }
 
+export class Capsule implements Shape, interfaces.Capsule {
+
+  btShape;
+
+  get margin(): number {
+    return this.btShape.getMargin();
+  }
+
+  set margin(newMargin: number) {
+    this.btShape.setMargin(newMargin);
+  }
+
+  constructor(public radius: number, public height: number) {
+    this.btShape = new ammo.btCapsuleShape(radius, height);   
+  }
+
+  destroy() {
+    ammo.destroy(this.btShape);
+  }
+
+}
+
 export class Plane implements Shape, interfaces.Plane {
 
   btShape;
@@ -68,10 +90,10 @@ export class Plane implements Shape, interfaces.Plane {
     this.btShape.setMargin(newMargin);
   }
 
-  constructor(distance: [number,number,number], offset: number) {
-    const btDistance = new ammo.btVector3(distance[0], distance[1], distance[2]);
-    this.btShape = new ammo.btPlaneShape(btDistance, offset);
-    ammo.destory(btDistance);
+  constructor(public normal: [number,number,number], public offset: number) {
+    const btNormal = new ammo.btVector3(normal[0], normal[1], normal[2]);
+    this.btShape = new ammo.btPlaneShape(btNormal, offset);
+    ammo.destory(btNormal);
   }
 
   destroy() { 
@@ -92,7 +114,7 @@ export class Sphere implements Shape, interfaces.Sphere {
     this.btShape.setMargin(newMargin);
   }
 
-  constructor(radius: number) {
+  constructor(public radius: number) {
     this.btShape = new ammo.btSphereShape(radius);
   }
 
