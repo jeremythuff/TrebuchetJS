@@ -1,6 +1,8 @@
 TrebuchetJS
 ===========
 
+<img width="100" src="https://raw.githubusercontent.com/CuboidGame/trebuchet.js/master/trebuchet.png" />
+
 TrebuchetJS is a new physics engine for the web, currently powered
 behind-the-scenes by [AmmoJS](https://github.com/kripken/ammo.js), which in
 turn is a direct port of the [BulletJS physics engine](https://github.com/bulletphysics/bullet3).
