@@ -1,6 +1,6 @@
 {
-  "name": "phys.js",
-  "version": "1.0.0",
+  "name": "trebuchet.js",
+  "version": "0.0.1",
   "description": "A generic physics engine for JavaScript",
   "main": "lib/index.js",
   "scripts": {
