@@ -3,34 +3,37 @@ TrebuchetJS
 
 <img width="100" src="https://raw.githubusercontent.com/CuboidGame/trebuchet.js/master/trebuchet.png" />
 
-TrebuchetJS is a new physics engine for the web, currently powered
-behind-the-scenes by [AmmoJS](https://github.com/kripken/ammo.js), which in
-turn is a direct port of the [BulletJS physics engine](https://github.com/bulletphysics/bullet3).
+TrebuchetJS is a new physics engine for the web, created from the ground up to
+cover a wide range of use-cases with a focus on speed and ease of use.
+
+This library was created with the purpose of providing an alternative to
+the existing physics engines out there, which mainly include
+[cannon.js](https://github.com/schteppe/cannon.js), the low-level
+[ammo.js](https://github.com/kripken/ammo.js) and the higher-level
+[PhysiJS](http://chandlerprall.github.io/Physijs/). It was heavily inspired by
+the [Bullet physics engine](https://githbub.com/bullet/bullet3).
 
 :warning: This library is under construction. Parts of the API might still not work or not work as expected.
 
-This library was created as an alternative to the relatively biased
-[PhysiJS](http://chandlerprall.github.io/Physijs/) physics engine, which
-provides somewhat similar behaviour but is tightly integrated with ThreeJS.
-
 ## Features
- 
+
+ - **Lightweight:** by being fully modular, you can only include what you need,
+   thus reducing code size
  - **Elegant and simple API:** much work went into making the API as easy to
    use as possible, while at the same time not giving back on flexibility and
    performance.
  - **TypeScript integration:** allowing you to fix many common mistakes before
    the code is even run
- - **Multithreaded:** if available, TrebuchetJS will use Web Workers to
-   distribute load
  - **Performance-oriented:** try to get the maximum performance out of
-   JavaScript's engine
+   JavaScript's engine, by supporting web workers and eventually the
+   [GPU](https://github.com/gpujs/gpu.js)
  - **Unbiased:** do not make any assumptions about the rendering engine that is
    used
 
-## Example
+## Usage
 
-Directly importing the library will give you access to all of the components
-for building your own simulation.
+Directly importing the library will give you access to all of the high-level
+components for building your own simulation.
 
 ```ts
 import { World, RigidBody, Box, Sphere } from "trebuchet.js"
@@ -50,8 +53,13 @@ const b1 = new RigidBody({
 })
 ```
 
-If you would like to create a worker, paste the following code somewhere where
-your browser has access to it:
+These components transparently defer work to an actual implementation of the
+physics engine, be it the GPU or a worker thread.
+
+### Using Web Workers
+
+If you would like to support threaded execution using a web worker, paste the
+following code somewhere where your browser has access to it:
 
 **myphysics.worker.js**
 ```ts
@@ -62,12 +70,12 @@ Next, spawn a new worker in the main thread and make the client point towards it
 
 **mygame.js**
 ```ts
-import * as TREBU from "trebuchet.js/client"
+import Trebuchet from "trebuchet.js"
 
 // make sure your browser has access to the following resource
-const worker = new Worker('myphysics.worker.js');
+const myWorker = new Worker('myphysics.worker.js');
 
-TREBU.setDefaultWorker(worker);
+const TREBU = new Trebuchet(worker);
 
 const world = new TREBU.World({ gravity: /** ... */ });
 
@@ -76,5 +84,5 @@ const world = new TREBU.World({ gravity: /** ... */ });
 ```
 
 Alternatively, you can pass the worker as an option while creating a new object
-through the `worker` attribute.
+through the `engine` attribute.
 
