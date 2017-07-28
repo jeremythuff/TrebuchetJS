@@ -1,6 +1,6 @@
 
-import Vec3 from "lineal/vec3"
-import Quat from "lineal/quat"
+export type Vec3 = [number,number,number]
+export type Quat = [number,number,number,number]
 
 export interface RigidBodyOptions {
   position?: [number,number,number];

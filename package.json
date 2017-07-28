@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/samvv/phys.js/issues"
   },
-  "homepage": "https://github.com/samvv/phys.js#readme"
+  "homepage": "https://github.com/samvv/phys.js#readme",
+  "dependencies": {
+    "gl-matrix": "^2.4.0"
+  }
 }
