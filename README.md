@@ -6,12 +6,13 @@ TrebuchetJS
 TrebuchetJS is a new physics engine for the web, created from the ground up to
 cover a wide range of use-cases with a focus on speed and ease of use.
 
-This library was created with the purpose of providing an alternative to
-the existing physics engines out there, which mainly include
-[cannon.js](https://github.com/schteppe/cannon.js), the low-level
-[ammo.js](https://github.com/kripken/ammo.js) and the higher-level
-[PhysiJS](http://chandlerprall.github.io/Physijs/). It was heavily inspired by
-the [Bullet physics engine](https://githbub.com/bullet/bullet3).
+TrebuchetJS aims to be a viable alternative for the following libraries:
+
+- [cannon.js](https://github.com/schteppe/cannon.js)
+- [ammo.js](https://github.com/kripken/ammo.js)
+- [PhysiJS](http://chandlerprall.github.io/Physijs/)
+
+It was heavily inspired by the [Bullet physics engine](https://githbub.com/bullet/bullet3).
 
 :warning: This library is under construction. Parts of the API might still not work or not work as expected.
 
