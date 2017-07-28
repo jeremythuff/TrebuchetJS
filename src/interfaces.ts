@@ -1,6 +1,5 @@
 
-export type Vec3 = [number,number,number]
-export type Quat = [number,number,number,number]
+import { vec3, quat } from "gl-matrix"
 
 export interface RigidBodyOptions {
   position?: [number,number,number];
@@ -20,15 +19,15 @@ export interface RigidBodyOptions {
 
 export interface RigidBody {
   shape: Shape;
-  position: Vec3;
-  rotation: Quat;
-  velocity: Vec3;
-  angularFactor: Vec3;
+  position: vec3;
+  rotation: quat;
+  velocity: vec3;
+  angularFactor: vec3;
   mass: number;
   friction: number;
   restitution: number;
 
-  applyImpulse(impulse: [number,number,number], relPos?: [number,number,number]): this;
+  applyImpulse(impulse: vec3, relPos?: vec3): this;
   //linearDamping: number;
   //angularDamping: number;
   //gravity: [number,number,number];
@@ -87,7 +86,7 @@ export interface WorldOptions {
 
 export interface World {
   addRigidBody(body: RigidBody): this
-  removeRigidBody(shape: Shape): this
+  removeRigidBody(body: RigidBody): this
   addSoftBody(body: SoftBody): this
   removeSoftBody(body: SoftBody): this
 }
