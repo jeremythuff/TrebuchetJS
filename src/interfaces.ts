@@ -1,13 +1,17 @@
 
+import Vec3 from "lineal/vec3"
+import Quat from "lineal/quat"
+
 export interface RigidBodyOptions {
   position?: [number,number,number];
+  rotation?: [number,number,number,number];
   velocity?: [number,number,number];
   angularFactor?: [number,number,number];
   mass?: number
   friction?: number
   restitution?: number
-  linearDamping?: number
-  angularDamping?: number
+	linearDamping?: number
+	angularDamping?: number
   gravity?: [number,number,number];
   world?: World,
   shape: Shape
@@ -15,15 +19,16 @@ export interface RigidBodyOptions {
 
 export interface RigidBody {
   shape: Shape;
-  position: [number,number,number];
-  velocity: [number,number,number];
-  angularFactor: [number,number,number];
+  position: Vec3;
+  rotation: Quat;
+  velocity: Vec3;
+  angularFactor: Vec3;
   mass: number;
   friction: number;
   restitution: number;
-  linearDamping: number;
-  angularDamping: number;
-  gravity: [number,number,number];
+  //linearDamping: number;
+  //angularDamping: number;
+  //gravity: [number,number,number];
 }
 
 export interface SoftBodyOptions {
@@ -77,9 +82,9 @@ export interface WorldOptions {
 }
 
 export interface World {
-  addRigidBody(body: RigidBody): Promise<void>
-  removeRigidBody(shape: Shape): Promise<void>
-  addSoftBody(body: SoftBody): Promise<void>
-  removeSoftBody(body: SoftBody): Promise<void>
+  addRigidBody(body: RigidBody): this
+  removeRigidBody(shape: Shape): this
+  addSoftBody(body: SoftBody): this
+  removeSoftBody(body: SoftBody): this
 }
 

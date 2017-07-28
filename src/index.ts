@@ -6,7 +6,7 @@ declare const Ammo;
 
 let ammo = Ammo();
 
-export class World {
+export class World implements interfaces.World {
 
   btCollisionConfiguration
   btDispatcher
@@ -40,6 +40,26 @@ export class World {
     ammo.destroy(gravity);
 
     ammo.destroy(gravity);
+  }
+
+  addRigidBody(body: RigidBody) {
+    this.btDynamicsWorld.addRigidBody(body.btBody);
+    return this;
+  }
+
+  removeRigidBody(body: RigidBody) {
+    this.btDynamicsWorld.removeRigidBody(body.btBody);
+    return this;
+  }
+
+  addSoftBody(body: interfaces.SoftBody) {
+    console.error(`Adding and removing soft bodies is currently not supported.`);
+    return this;
+  }
+
+  removeSoftBody(body: interfaces.SoftBody) {
+    console.error(`Adding and removing soft bodies is currently not supported.`);
+    return this;
   }
 
   destroy() {
@@ -153,7 +173,7 @@ export interface RigidBodyOptions extends interfaces.RigidBodyOptions {
   world?: World;
 }
 
-export class RigidBody {
+export class RigidBody implements interfaces.RigidBody {
 
   btBody;
   btMotionState;
