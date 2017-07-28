@@ -27,6 +27,8 @@ export interface RigidBody {
   mass: number;
   friction: number;
   restitution: number;
+
+  applyImpulse(impulse: [number,number,number], relPos?: [number,number,number]): this;
   //linearDamping: number;
   //angularDamping: number;
   //gravity: [number,number,number];
