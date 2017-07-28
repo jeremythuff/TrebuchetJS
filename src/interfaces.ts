@@ -14,6 +14,7 @@ export interface RigidBodyOptions {
 	angularDamping?: number
   gravity?: [number,number,number];
   world?: World,
+  worker?: Worker;
   shape: Shape
 }
 
@@ -79,6 +80,7 @@ export interface Plane extends Shape {
 
 export interface WorldOptions {
   gravity?: [number,number,number];
+  worker?: Worker
 }
 
 export interface World {
