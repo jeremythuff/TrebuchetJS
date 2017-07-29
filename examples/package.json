@@ -1,0 +1,32 @@
+{
+  "name": "trebuchet.js-examples",
+  "version": "0.0.1",
+  "description": "Example usage of TrebuchetJS",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CuboidGame/trebuchet.js.git"
+  },
+  "keywords": [
+    "physics-engine",
+    "3d",
+    "physics",
+    "example",
+    "website"
+  ],
+  "author": "Sam Vervaeck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CuboidGame/trebuchet.js/issues"
+  },
+  "homepage": "https://github.com/CuboidGame/trebuchet.js#readme",
+  "devDependencies": {
+    "ts-loader": "^2.3.2",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  }
+}
