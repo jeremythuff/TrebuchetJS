@@ -76,7 +76,7 @@ import Trebuchet from "trebuchet.js"
 // make sure your browser has access to the following resource
 const myWorker = new Worker('myphysics.worker.js');
 
-const TREBU = new Trebuchet(worker);
+const TREBU = new Trebuchet(myWorker);
 
 const world = new TREBU.World({ gravity: /** ... */ });
 
